@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_test/presentation/index_page/index_model.dart';
+import 'package:riverpod_test/presentation/second_page/second_page.dart';
 
 class NextPage extends HookWidget {
   const NextPage({Key? key}) : super(key: key);
@@ -29,6 +30,16 @@ class NextPage extends HookWidget {
               onTap: count.resetCount,
               child: Text(
                 'リセット',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+            GestureDetector(
+              onTap: () => Navigator.pushAndRemoveUntil<SecondPage>(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondPage()),
+                  (_) => false),
+              child: Text(
+                '次のページへ',
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
